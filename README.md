@@ -69,7 +69,7 @@ registration, payment processing, and administration of events. It consists of v
 - **Database:** MySQL.
 - **Payment Processing:** Integration with a secure payment gateway (e.g Paytm).
 
-## Developer 
+## Contributers 
 
 - **Hemant Kumar Kashyap** - Team Leader
 - **Abhay Singh Rawat** - Backend Developer
@@ -80,6 +80,9 @@ registration, payment processing, and administration of events. It consists of v
 
 - Host the website on a secure web server with appropriate security measures.
 - Ensure regular backups of the database to prevent data loss.
+
+## License
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
 
 ## Conclusion
 
