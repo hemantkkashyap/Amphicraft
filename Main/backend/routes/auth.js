@@ -12,8 +12,10 @@ import Registerdevent from '../Controller/Registerdevent.js';
 import Updation from '../models/Updation.js';
 import Participant from "../models/Participant.js";
 import Transactions from "../Controller/Transaction.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
-const JWT_SRT = "hemantkashyap";
+const JWT_SRT = process.env.JWT_SECERT;
 
 const router = express.Router();
 

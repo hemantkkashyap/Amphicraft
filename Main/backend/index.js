@@ -4,12 +4,14 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 import router from './routes/phonepeRoute.js';
 import authRouter from './routes/auth.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Enable CORS for all routes
 connectToMongo();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT;
 const corsOptions = {
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods

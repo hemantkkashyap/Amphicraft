@@ -2,11 +2,14 @@ import crypto from 'crypto';
 import axios from 'axios';
 import Participant from '../models/Participant.js'; // Import Participant model
 import{MailtoAll }from './SendEmail.js'
+import dotenv from 'dotenv';
+dotenv.config();
+
 const newPayment = async (req, res) => {
     try {
         const merchantTransactionId = req.body.transactionId;
         const data = {
-            merchantId: "PGTESTPAYUAT",
+            merchantId: process.env.MERCHANT_ID,
             merchantTransactionId: merchantTransactionId,
             merchantUserId: req.body.MUID,
             name: req.body.name,
