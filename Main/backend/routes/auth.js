@@ -376,8 +376,8 @@ router.post('/checkuser', limiter,  async (req,res) => {
   // Sanitize email to prevent NoSQL injection
   const sanitizedEmail = sanitize(email);
 
-    // Check if a user with the provided email exists
-    const user = await User.findOne({ email:sanitizedEmail });
+    // Find the user by email
+  const user = await User.findOne({ email: sanitizedEmail });
     
     if (user) {
       // If user exists, send response indicating user exists
