@@ -14,7 +14,7 @@ const ForgetPassword = () => {
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/auth/sendemail", {
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/sendemail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const ForgetPassword = () => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/auth/verifyotp", {
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/verifyotp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const ForgetPassword = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/resetpassword",
+        "https://amphicraft-api.vercel.app/api/auth/resetpassword",
         {
           method: "POST",
           headers: {

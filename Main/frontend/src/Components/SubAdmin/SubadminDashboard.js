@@ -46,7 +46,7 @@ export default function SubadminDashboard() {
   // Function to fetch users data from the API
   const fetchUsersData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/getalluser");
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/getalluser");
       const data = await response.json();
       setUsersData(data);
 

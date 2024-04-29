@@ -83,7 +83,7 @@ export default function Signup() {
   
     try {
       const response = await fetch(
-        "http://amphicraft-api.vercel.app/api/auth/createuser",
+        "https://amphicraft-api.vercel.app/api/auth/createuser",
         {
           method: "POST",
           headers: {

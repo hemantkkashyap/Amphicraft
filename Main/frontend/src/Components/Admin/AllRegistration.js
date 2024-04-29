@@ -9,7 +9,7 @@ function AllRegister() {
     const fetchdetails = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/allregister"
+          "https://amphicraft-api.vercel.app/api/auth/allregister"
         );
         setdetails(response.data);
       } catch (error) {
