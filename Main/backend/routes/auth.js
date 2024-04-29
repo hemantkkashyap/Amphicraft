@@ -51,20 +51,24 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      const errorResponse = {};
+      errors.array().forEach((error) => {
+        errorResponse[error.param] = error.msg;
+      });
+      return res.status(400).json({ errors: errorResponse });
     }
 
     try {
       let existingUser = await User.findOne({ email: req.body.email });
       if (existingUser) {
-        return res.status(400).json({ error: "Email already exists" });
+        return res.status(400).json({ email: "Email already exists" });
       }
 
       existingUser = await User.findOne({ enrollment: req.body.enrollment });
       if (existingUser) {
         return res
           .status(400)
-          .json({ error: "Enrollment number already exists" });
+          .json({ enrollment: "Enrollment number already exists" });
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -158,9 +162,15 @@ router.post("/getuser", fetchuser, async (req, res) => {
     res.send(user);
   } catch (error) {
     console.error("Error getting user:", error);
+    if (error.kind === "ObjectId") {
+      // Handle invalid user ID format error
+      return res.status(400).json({ message: "Invalid user ID format" });
+    }
+    // For other errors, return a generic internal server error message
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 router.post(
   "/createevent",
