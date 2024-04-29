@@ -12,11 +12,6 @@ connectToMongo();
 
 const app = express();
 const port = process.env.PORT;
-const corsOptions = {
-  origin: 'https://amphicraft.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'auth-token'], // Specify the allowed headers// Specify the allowed headers
-};
 
 app.use(cors(corsOptions));
 app.use(express.json());
