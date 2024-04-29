@@ -57,7 +57,7 @@ export default function Profile() {
       body: JSON.stringify({ email: email }),
     };
 
-    fetch("http://localhost:5000/api/auth/registerdevent", requestOptions)
+    fetch("https://amphicraft-api.vercel.app/api/auth/registerdevent", requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch registered events");

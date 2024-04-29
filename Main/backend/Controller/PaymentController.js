@@ -17,7 +17,7 @@ const newPayment = async (req, res) => {
             merchantUserId: req.body.MUID,
             name: req.body.name,
             amount: req.body.amount * 100,
-            redirectUrl: `http://localhost:5000/api/status/${merchantTransactionId}`,
+            redirectUrl: `https://amphicraft-api.vercel.app/api/status/${merchantTransactionId}`,
             redirectMode: 'POST',
             mobileNumber: req.body.number,
             paymentInstrument: {
@@ -79,11 +79,11 @@ const checkStatus = async (req, res) => {
         const response = await axios(options);
         if (response.data.success === true) {
             await updateParticipantStatus(merchantTransactionId, 'success');
-            const url = `http://localhost:3000/success`;
+            const url = `https://amphicraft.vercel.app/success`;
             return res.redirect(url);
         } else {
             await updateParticipantStatus(merchantTransactionId, 'failure');
-            const url = `http://localhost:3000/failure`;
+            const url = `https://amphicraft.vercel.app/failure`;
             return res.redirect(url);
         }
     } catch (error) {
