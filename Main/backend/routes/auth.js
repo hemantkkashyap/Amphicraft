@@ -1,4 +1,5 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import User from "../models/User.js";
 import { body, validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
@@ -18,6 +19,13 @@ dotenv.config();
 const JWT_SRT = process.env.JWT_SECERT;
 
 const router = express.Router();
+
+// Apply rate limiting middleware
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+
 
 router.post(
   "/createuser",
@@ -416,6 +424,6 @@ router.post('/payment', newPayment);
 router.post('/status/:txnId', checkStatus);
 router.post('/eventregistration',Eventregistration);
 router.post('/registerdevent',Registerdevent);
-router.post("/transactions",Transactions);
+router.post("/transactions",limiter,Transactions);
 
 export default router;
