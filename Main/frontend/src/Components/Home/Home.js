@@ -79,7 +79,7 @@ export default function Home() {
             <p>
               <span>
                 <img
-                  src=".images/one.png"
+                  src="images/one.png"
                   alt=""
                 />
               </span>
