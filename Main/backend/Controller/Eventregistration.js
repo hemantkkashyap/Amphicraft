@@ -1,6 +1,17 @@
 import Participant from '../models/Participant.js'; // Import Participant model
 import Event from '../models/Event.js';
 
+// set up rate limiter: maximum of five requests per minute
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
+
+
 const Eventregistration = async (req, res) => {
   try {
     // Extract event details from the request body
