@@ -79,44 +79,34 @@ export default function Home() {
             <p>
               <span>
                 <img
-                  src="https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_742320_1679349106715629.jpg"
+                  src=".images/one.png"
                   alt=""
                 />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Hemant.jpeg" alt="" />
+                <img src="images/two.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Hemant.jpeg" alt="" />
+                <img src="images/three.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Hemant.jpeg" alt="" />
+                <img src="images/Slide1.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Hemant.jpeg" alt="" />
+                <img src="images/Slide2.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Hemant.jpeg" alt="" />
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src="images/Hemant.jpeg" alt="" />
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src="images/Hemant.jpeg" alt="" />
+                <img src="images/Slide3.png" alt="" />
               </span>
             </p>
           </div>
