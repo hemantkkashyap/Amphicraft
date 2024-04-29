@@ -106,7 +106,7 @@ export default function Signup() {
         // If user is registered successfully, send email
         history("/login");
         const emailResponse = await fetch(
-          "http://localhost:5000/api/auth/registersuccess",
+          "https://amphicraft-api.vercel.app/api/auth/registersuccess",
           {
             method: "POST",
             headers: {
@@ -178,7 +178,6 @@ export default function Signup() {
         }
       }
     } catch (error) {
-      console.error("Error:", error);
       setAlertVariant("danger");
       setAlertMessage("An error occurred. Please try again later.");
       setShowAlert(true);
