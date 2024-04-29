@@ -23,7 +23,7 @@ export default function Profile() {
     }
     setToken(tokenFromLocalStorage);
 
-    fetch("http://localhost:5000/api/auth/getuser", {
+    fetch("http://amphicraft-api.vercel.app/api/auth/getuser", {
       method: "POST",
       headers: {
         "auth-token": tokenFromLocalStorage,
