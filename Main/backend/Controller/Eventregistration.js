@@ -1,6 +1,8 @@
 import Participant from '../models/Participant.js'; // Import Participant model
 import Event from '../models/Event.js';
 
+
+
 const Eventregistration = async (req, res) => {
   try {
     // Extract event details from the request body

@@ -1,6 +1,8 @@
 import React from 'react'
 import Participant from '../models/Participant.js'; // Import Participant model
 
+
+
 const Transactions = async (req, res) => {
     try {
         const { email } = req.body; // Retrieve email from query parameters
