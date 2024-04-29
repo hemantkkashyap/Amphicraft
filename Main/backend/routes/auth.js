@@ -368,8 +368,16 @@ router.post('/checkuser', limiter,  async (req,res) => {
   const { email } = req.body;
 
   try {
+       // Validate email format
+   if (!email || typeof email !== 'string') {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+
+  // Sanitize email to prevent NoSQL injection
+  const sanitizedEmail = sanitize(email);
+
     // Check if a user with the provided email exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email:sanitizedEmail });
     
     if (user) {
       // If user exists, send response indicating user exists
