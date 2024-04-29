@@ -5,15 +5,7 @@ import{MailtoAll }from './SendEmail.js'
 import dotenv from 'dotenv';
 dotenv.config();
 
-// set up rate limiter: maximum of five requests per minute
-var RateLimit = require('express-rate-limit');
-var limiter = RateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // max 100 requests per windowMs
-});
 
-// apply rate limiter to all requests
-app.use(limiter);
 
 
 const newPayment = async (req, res) => {
