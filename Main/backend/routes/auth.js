@@ -389,8 +389,16 @@ router.post('/deleteAccount', limiter,  async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Find the user by email
-    const user = await User.findOne({ email });
+   // Validate email format
+   if (!email || typeof email !== 'string') {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+
+  // Sanitize email to prevent NoSQL injection
+  const sanitizedEmail = sanitize(email);
+
+  // Find the user by email
+  const user = await User.findOne({ email: sanitizedEmail });
 
     // If user found, compare hashed password
     if (user) {
