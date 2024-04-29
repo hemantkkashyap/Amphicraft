@@ -79,37 +79,46 @@ export default function Home() {
             <p>
               <span>
                 <img
-                  src="images/one.PNG"
-                  alt="One"
+                  src="https://d2jx2rerrg6sh3.cloudfront.net/images/news/ImageForNews_742320_1679349106715629.jpg"
+                  alt=""
                 />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/two.PNG" alt="Two" />
+                <img src="images/Hemant.jpeg" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/three.PNG" alt="Three" />
+                <img src="images/Hemant.jpeg" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide1.PNG" alt="Four" />
+                <img src="images/Hemant.jpeg" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide2.PNG" alt="Five" />
+                <img src="images/Hemant.jpeg" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide3.PNG" alt="Six" />
+                <img src="images/Hemant.jpeg" alt="" />
               </span>
             </p>
-
+            <p>
+              <span>
+                <img src="images/Hemant.jpeg" alt="" />
+              </span>
+            </p>
+            <p>
+              <span>
+                <img src="images/Hemant.jpeg" alt="" />
+              </span>
+            </p>
           </div>
         </div>
         <div className="contanier9" data-aos="fade-up">
