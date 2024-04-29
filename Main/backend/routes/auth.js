@@ -241,10 +241,24 @@ router.post(
     }
 
     try {
-      let existingEvent = await Event.findOne({ eventname: req.body.eventname });
-      if (existingEvent) {
-        return res.status(400).json({ error: "Event already exists" });
-      }
+      const { eventname } = req.body;
+
+  // Validate that the event name is provided
+  if (!eventname) {
+    return res.status(400).json({ error: "Event name is required" });
+  }
+
+  // Sanitize the event name before using it in the database query
+  const sanitizedEventName = sanitize(eventname);
+
+  // Perform the database query using the sanitized event name
+  const existingEvent = await Event.findOne({ eventname: sanitizedEventName });
+
+  // Check if an event with the same name already exists
+  if (existingEvent) {
+    return res.status(400).json({ error: "Event already exists" });
+  }
+
 
       const newEvent = new Event({
         eventname: req.body.eventname,
@@ -298,18 +312,25 @@ router.get("/getallparticpent", limiter,  async (req,res) => {
 router.post("/details", limiter,  async (req, res) => {
   try {
     const { eventname } = req.body;
-    console.log(eventname);
+
+    // Validate that the event name is provided
     if (!eventname) {
       return res.status(400).json({ error: "Event name is required" });
     }
-
-    const event = await Event.findOne({ eventname });
-
+  
+    // Sanitize the event name before using it in the database query
+    const sanitizedEventName = sanitize(eventname);
+  
+    // Perform the database query using the sanitized event name
+    const event = await Event.findOne({ eventname: sanitizedEventName });
+  
+    // Check if the event exists
     if (!event) {
       return res.status(404).json({ error: "Event not found" });
     }
-
-    return res.status(200).json(event);
+  
+    // Handle the case when the event is found
+    return res.status(200).json({ event });
   } catch (error) {
     console.error("Error fetching event:", error);
     return res.status(500).json({ error: "Server error" });
