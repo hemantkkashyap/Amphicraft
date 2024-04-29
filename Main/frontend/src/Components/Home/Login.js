@@ -20,7 +20,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://amphicraft-api.vercel.app/api/auth/login", {
+      const response = await fetch("http://amphicraft-api.vercel.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
