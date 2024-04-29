@@ -121,7 +121,6 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      const { email, password } = req.body;
 
       // Validate that email and password are provided
       if (!email || !password) {
