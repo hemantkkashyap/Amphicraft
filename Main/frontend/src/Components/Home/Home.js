@@ -79,34 +79,34 @@ export default function Home() {
             <p>
               <span>
                 <img
-                  src=".images/one.png"
+                  src="./images/one.png"
                   alt=""
                 />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/two.png" alt="" />
+                <img src="./images/two.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/three.png" alt="" />
+                <img src="./images/three.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide1.png" alt="" />
+                <img src="./images/Slide1.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide2.png" alt="" />
+                <img src="./images/Slide2.png" alt="" />
               </span>
             </p>
             <p>
               <span>
-                <img src="images/Slide3.png" alt="" />
+                <img src="./images/Slide3.png" alt="" />
               </span>
             </p>
           </div>
