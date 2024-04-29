@@ -17,7 +17,7 @@ const port = process.env.PORT;
 app.use(cors({
   origin: 'https://amphicraft.vercel.app',
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'auth-token']
 }));
 
 app.use(express.json());
