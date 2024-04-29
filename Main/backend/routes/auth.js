@@ -72,12 +72,17 @@ router.post(
         return res.status(400).json({ email: "Email already exists" });
       }
 
-      existingUser = await User.findOne({ enrollment: req.body.enrollment });
-      if (existingUser) {
-        return res
-          .status(400)
-          .json({ enrollment: "Enrollment number already exists" });
-      }
+     // Sanitize the enrollment before using it in the database query
+  const sanitizedEnrollment = sanitize(req.body.enrollment);
+
+  // Check if a user with the provided enrollment exists
+  existingUser = await User.findOne({ enrollment: sanitizedEnrollment });
+
+  // If a user with the enrollment already exists, send an appropriate error response
+  if (existingUser) {
+    return res.status(400).json({ enrollment: "Enrollment number already exists" });
+  }
+
 
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
@@ -124,16 +129,29 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
+      const { email, password } = req.body;
 
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+  // Validate that email and password are provided
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required" });
+  }
 
-      if (!isPasswordValid) {
-        return res.status(401).json({ message: "Invalid password" });
-      }
+  // Sanitize the email before using it in the database query
+  const sanitizedEmail = sanitize(email);
+
+  // Find the user by email
+  const user = await User.findOne({ email: sanitizedEmail });
+
+  // Check if the user exists
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+       // Validate the password
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: "Invalid password" });
+  }
 
       const payload = {
         user: {
