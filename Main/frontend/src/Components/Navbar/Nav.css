@@ -1,0 +1,415 @@
+.navbar{
+    border-radius: 10px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    height: 70px;
+    background: white;
+    z-index: 100;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.171);
+}
+
+.navbar .part1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    padding-left: 15px;
+}
+.navbar .part1 img{
+    height: 50%;
+}
+.navbar .part1 #bar{
+    margin-right: 5px;
+    color: black;
+    display: none;
+}
+.navbar .part1 #bar:hover{
+    background: #ddd;
+}
+.navbar .part2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+    height: 90%;
+}
+.navbar .part2 .navitem{
+  color: black;
+    cursor: pointer;
+    width: 100px;
+    height: 75%;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+    background: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.navbar .part2 .navitem:hover{
+background: rgb(10 10 10/24%);
+}
+.navbar .part2 #navitem{
+  font-size: 16px;
+  font-family: "Poppins";
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+.navbar .part2 #logout{
+    cursor: pointer;
+    margin: 15px;
+    font-size: 20px;
+}
+.navbar .part2 .navitem:focus{
+    border: none;
+}
+.navbar .part2 #event{
+    height:30px ;
+    width: 100px;
+}
+.navbar .part2 .login{
+  color: black;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    font-family: "Poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    background:none;
+    border-radius: 10px;
+    border: 1px solid rgb(43 51 53);
+    font-size: 16px;
+    margin: 5px;
+}
+.navbar.dark .part2 .login{
+  color: white;
+  border: 1px solid white;
+}
+.navbar .part2 .sign{
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    font-family: "Poppins";
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    background:rgb(43 51 53);
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    color: white;
+    margin: 5px;
+}
+
+.navbar.dark .part2 .navitem:hover{
+    background: rgb(255 255 255 /4%);
+}
+.navbar .part2 .navitem p{
+    line-height: 16px;
+    margin: 5px;
+}
+.navbar .part2 .profilelink img{
+  width: 100%;
+  border-radius: 50%;
+}
+.navbar .part2 .profilelink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background: white;
+}
+.flexsidebar{
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.582);
+    backdrop-filter: blur(5px); /* Adjust the blur radius as needed */
+    display: none;
+    left: -80%; /* Initially off-screen to the left */
+}
+.flexsidebar div{
+    margin: 10px;
+    width: 90%;
+    height: 80%;
+}
+.flexsidebar.open div .flexitem{
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    padding-left: 15px;
+    padding-top: 30px;
+    font-size: 16px;
+    border: none;
+    background: none;
+}
+.flexsidebar.open div select{
+  cursor: pointer;
+    color: white;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    font-size: 20px;
+    padding-left: 20px;
+    border: none;
+    background: none;
+}
+.flexsidebar.open div select:focus{
+  border:1px solid none;
+}
+.flexsidebar.open div select option{
+  font-size: 16px;
+  background: #3c3c3c;
+}
+.flexsidebar.open div .profileitem{
+  margin: 0;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: "Poppins";
+  font-size: 18px;
+  border: none;
+  background: none;
+}
+.flexsidebar.open div .profileitem .profilelink{
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: white;
+}
+.flexsidebar.open div .profileitem .profilelink img{
+  width: 100%;
+  border-radius: 50%;
+}
+.flexsidebar.open div .flexitem:hover{
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.495);
+}
+.flexsidebar.open div .flexitem p{
+   margin: 4px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.backshadow{
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.721);
+    width: 100%;
+    height: 100vh;
+    z-index: 60;
+    backdrop-filter: blur(5px); /* Adjust the blur radius as needed */
+
+}
+
+@media (max-width:400px){
+    .navbar{
+        width: 100%;
+    }
+    .navbar .part1{
+      gap: 10px;
+      width: 50%;
+    }
+    .navbar .part2{
+      display: none;
+    }
+    .navbar .part2 .navitem,.navbar .part2 .login,.navbar .part2 .sign{
+     display: none;
+    }
+    .navbar .part1 #bar{
+      color: white;
+        display: block;
+    }
+    .flexsidebar.open{
+        z-index: 101;
+        left: 0; 
+        display: block;
+        transition: left 4s ease-out;
+    }
+    .backshadow.open{
+        display: block;
+        z-index:9;
+    }
+
+ }
+
+ /* CSS for theme toggle button */
+.theme-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000; /* Change color as needed */
+    font-size: 16px; /* Adjust spacing as needed */
+  }
+  
+  .theme-toggle:hover {
+    text-decoration: underline;
+  }
+  .navbar.light {
+    background: #ffffff; /* Light background color */
+  }
+  
+  /* CSS for dark theme */
+  .navbar.dark {
+    background: #3c3c3c; /* Dark background color */
+  }  
+
+  .navbar.dark .part2 .navitem{
+    color: white;
+  }
+
+  .navbar.dark .part2 .container{
+    margin-left: 20px;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 50px 20px rgba(0, 0, 0, .1);
+    line-height: 1;
+  }
+  
+  .input {
+    display: none;
+  }
+  
+  .icon {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    transition: transform 500ms;
+  }
+  
+  .icon--moon {
+    color: yellow;
+    transition-delay: 200ms;
+  }
+  
+  .icon--sun {
+    color: orange;
+    transform: scale(0);
+  }
+  
+  #switch:checked + .icon--moon {
+    transform: rotate(360deg) scale(0);
+  }
+  
+  #switch:checked ~ .icon--sun {
+    transition-delay: 200ms;
+    transform: scale(1) rotate(360deg);
+  }
+
+  :root {
+    --color-border:
+    rgb(255 255 255 /16%);
+  }
+  .dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 72px;
+    color: white;
+  }
+
+  .dropdown > a > span {
+    font-size: 20px;
+    color: 
+    rgb(255 255 255 /24%);
+    translate: 0 2px;
+  }
+
+  .menu{
+    position: absolute;
+    top: 50px;
+    width: 120px;
+    height: 170px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: #3c3c3c;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+  }
+
+  .dropdown:hover .menu{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu::before{
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-top: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    top: -7px;
+    right: 22px;
+    width: 12px;
+    height: 12px;
+    rotate: -45deg;
+  }
+
+  .menu >a{
+    padding: 8px 30px;
+    font-size: 15px;
+    color: white;
+  }
+
+  .menu > a:hover{
+    background: rgb(255 255 255 /4%);
+  }
