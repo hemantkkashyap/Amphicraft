@@ -1,4 +1,5 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import User from "../models/User.js";
 import { body, validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
@@ -19,8 +20,15 @@ const JWT_SRT = process.env.JWT_SECERT;
 
 const router = express.Router();
 
+// Apply rate limiting middleware
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+
+
 router.post(
-  "/createuser",
+  "/createuser", limiter,
   [
     body("name")
       .trim()
@@ -103,7 +111,7 @@ router.post(
 );
 
 router.post(
-  "/login",
+  "/login", limiter, 
   [
     body("email").trim().isEmail().withMessage("Invalid email address"),
     body("password", "Password cannot be blank!!").exists(),
@@ -152,7 +160,7 @@ router.post(
   }
 );
 
-router.post("/getuser", fetchuser, async (req, res) => {
+router.post("/getuser", limiter,  fetchuser, async (req, res) => {
   try {
     const userId = req.user.id;
     const user = await User.findById(userId).select("-password");
@@ -173,7 +181,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
 
 
 router.post(
-  "/createevent",
+  "/createevent", limiter, 
   [
     body("eventname")
       .trim()
@@ -267,7 +275,7 @@ router.post(
   }
 );
 
-router.get("/events", async (req, res) => {
+router.get("/events",  limiter, async (req, res) => {
   try {
     const events = await Event.find();
     return res.status(200).json(events);
@@ -277,7 +285,7 @@ router.get("/events", async (req, res) => {
   }
 });
 
-router.get("/getallparticpent", async (req,res) => {
+router.get("/getallparticpent", limiter,  async (req,res) => {
   try {
     const events = await Participant.find().populate('participants');
     return res.status(200).json(events);
@@ -287,7 +295,7 @@ router.get("/getallparticpent", async (req,res) => {
   }
 })
 
-router.post("/details", async (req, res) => {
+router.post("/details", limiter,  async (req, res) => {
   try {
     const { eventname } = req.body;
     console.log(eventname);
@@ -309,7 +317,7 @@ router.post("/details", async (req, res) => {
 });
 
 
-router.get("/subadmin", async (req, res) => {
+router.get("/subadmin", limiter,  async (req, res) => {
   try {
     const subadmins = await User.find({ isSubAdmin: true });
     return res.status(200).json(subadmins);
@@ -319,7 +327,7 @@ router.get("/subadmin", async (req, res) => {
   }
 });
 
-router.put("/updateentry", async (req, res) => {
+router.put("/updateentry", limiter,  async (req, res) => {
   const { name, useremail, eventname, entries } = req.body;
 
   try {
@@ -336,7 +344,7 @@ router.put("/updateentry", async (req, res) => {
   }
 });
 
-router.get("/getalluser",async (req,res) =>{
+router.get("/getalluser", limiter, async (req,res) =>{
   try {
     const users = await User.find();
     return res.status(200).json(users);
@@ -346,7 +354,7 @@ router.get("/getalluser",async (req,res) =>{
   }
 });
 
-router.get("/getupdate",async (req,res) =>{
+router.get("/getupdate", limiter, async (req,res) =>{
   try {
     const update = await Updation.find();
     return res.status(200).json(update);
@@ -356,7 +364,7 @@ router.get("/getupdate",async (req,res) =>{
   }
 });
 
-router.post('/checkuser', async (req,res) => {
+router.post('/checkuser', limiter,  async (req,res) => {
   const { email } = req.body;
 
   try {
@@ -377,7 +385,7 @@ router.post('/checkuser', async (req,res) => {
   }
 })
 
-router.post('/deleteAccount', async (req, res) => {
+router.post('/deleteAccount', limiter,  async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -408,14 +416,14 @@ router.post('/deleteAccount', async (req, res) => {
 });
 
 
-router.post('/sendemail', SendEmail);
-router.post('/verifyotp', VerifyOTP);
-router.post('/resetpassword', ResetPassword);
-router.post('/registersuccess', SignUpSucess);
-router.post('/payment', newPayment);
-router.post('/status/:txnId', checkStatus);
-router.post('/eventregistration',Eventregistration);
-router.post('/registerdevent',Registerdevent);
-router.post("/transactions",Transactions);
+router.post('/sendemail', limiter,  SendEmail);
+router.post('/verifyotp',  limiter, VerifyOTP);
+router.post('/resetpassword',  limiter, ResetPassword);
+router.post('/registersuccess', limiter,  SignUpSucess);
+router.post('/payment', limiter,  newPayment);
+router.post('/status/:txnId', limiter,  checkStatus);
+router.post('/eventregistration', limiter, Eventregistration);
+router.post('/registerdevent', limiter, Registerdevent);
+router.post("/transactions", limiter, Transactions);
 
 export default router;
