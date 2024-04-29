@@ -38,7 +38,7 @@ function Admin() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://amphicraft.vercel.app/api/auth/createuser",
+        "https://amphicraft-api.vercel.app//api/auth/createuser",
         formData
       );
       setFormData({
