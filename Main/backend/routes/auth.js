@@ -91,7 +91,7 @@ router.post(
           id: newUser.id,
         },
       };
-      const token = jwt.sign(payload, JWT_SRT);
+      const token = jwt.sign(payload,JWT_SRT);
       
       await newUser.save();
       res.status(201).json({ token });
@@ -142,7 +142,7 @@ router.post(
       payload.user.isSubAdmin = isSubAdmin;
       payload.user.name = name;
       payload.user.useremail = useremail;
-      const token = jwt.sign(payload, JWT_SRT);
+      const token = jwt.sign(payload,JWT_SRT);
 
       res.json({ token, isAdmin, isSubAdmin ,name,useremail});
     } catch (error) {
