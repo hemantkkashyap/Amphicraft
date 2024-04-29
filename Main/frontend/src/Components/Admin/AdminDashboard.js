@@ -29,7 +29,7 @@ export default function AdminDashboard() {
 
   const fetchUsersData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/getalluser");
+      const response = await fetch("https://amphicraft.vercel.app/api/auth/getalluser");
       const data = await response.json();
       setUsersData(data);
 
@@ -47,7 +47,7 @@ export default function AdminDashboard() {
 
   const fetchEventsCount = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/events");
+      const response = await fetch("https://amphicraft.vercel.app/api/auth/events");
       const eventsData = await response.json();
       setTotalEventsCount(eventsData.length);
 

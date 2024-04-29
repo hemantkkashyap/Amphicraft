@@ -23,7 +23,7 @@ export default function Profile() {
     }
     setToken(tokenFromLocalStorage);
 
-    fetch("http://localhost:5000/api/auth/getuser", {
+    fetch("https://amphicraft.vercel.app/api/auth/getuser", {
       method: "POST",
       headers: {
         "auth-token": tokenFromLocalStorage,
@@ -57,7 +57,7 @@ export default function Profile() {
       body: JSON.stringify({ email: email }),
     };
 
-    fetch("http://localhost:5000/api/auth/registerdevent", requestOptions)
+    fetch("https://amphicraft.vercel.app/api/auth/registerdevent", requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch registered events");
@@ -91,7 +91,7 @@ export default function Profile() {
     };
     console.log(email);
     // Make an API call to fetch transactions
-    fetch("http://localhost:5000/api/auth/transactions", requestOptions)
+    fetch("https://amphicraft.vercel.app/api/auth/transactions", requestOptions)
       .then((response) => {
         if (!response.ok) {
           // Check if response status is not ok (status >= 400)
@@ -117,7 +117,7 @@ export default function Profile() {
   // Function to handle "Delete my account" button click
   const handleDeleteAccount = () => {
     // Check if the input email exists in the database
-    fetch(`http://localhost:5000/api/auth/checkuser`, {
+    fetch(`https://amphicraft.vercel.app/api/auth/checkuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export default function Profile() {
 
   const handleConfirmDelete = () => {
     // Send email and password to the server for verification
-    fetch("http://localhost:5000/api/auth/deleteAccount", {
+    fetch("https://amphicraft.vercel.app/api/auth/deleteAccount", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -74,7 +74,7 @@ export default function EventForm() {
     console.log(participantDetails);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/eventregistration",
+        "https://amphicraft.vercel.app/api/auth/eventregistration",
         participantDetails
       );
 
@@ -87,7 +87,7 @@ export default function EventForm() {
           transactionId: transactionid,
         };
         axios
-          .post("http://localhost:5000/api/auth/payment", data)
+          .post("https://amphicraft.vercel.app/api/auth/payment", data)
           .then((res) => {
             window.location.href = res.data;
           })

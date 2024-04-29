@@ -9,7 +9,7 @@ export default function AllParticipants() {
   const fetchParticipantData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/getallparticpent"
+        "https://amphicraft.vercel.app/api/auth/getallparticpent"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch participant data");
