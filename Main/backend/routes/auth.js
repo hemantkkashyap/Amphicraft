@@ -406,8 +406,9 @@ router.post('/deleteAccount', limiter,  async (req, res) => {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
-        // If passwords match, delete the user
-        await User.deleteOne({ email });
+       // If passwords match, delete the user
+       await User.deleteOne({ email: sanitizedEmail });
+
         return res.status(200).json({ message: "Account deleted successfully" });
       } else {
         // If password does not match, send error response
