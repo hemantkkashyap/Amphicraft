@@ -6,14 +6,19 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import fetchuser from "../middleware/fetchuser.js";
 import Event from "../models/Event.js";
-import { SendEmail, VerifyOTP, ResetPassword, SignUpSucess } from "../Controller/SendEmail.js";
-import { newPayment, checkStatus } from '../Controller/PaymentController.js';
-import Eventregistration from '../Controller/Eventregistration.js';
-import Registerdevent from '../Controller/Registerdevent.js';
-import Updation from '../models/Updation.js';
+import {
+  SendEmail,
+  VerifyOTP,
+  ResetPassword,
+  SignUpSucess,
+} from "../Controller/SendEmail.js";
+import { newPayment, checkStatus } from "../Controller/PaymentController.js";
+import Eventregistration from "../Controller/Eventregistration.js";
+import Registerdevent from "../Controller/Registerdevent.js";
+import Updation from "../models/Updation.js";
 import Participant from "../models/Participant.js";
 import Transactions from "../Controller/Transaction.js";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 const JWT_SRT = process.env.JWT_SECERT;
@@ -26,9 +31,9 @@ const limiter = rateLimit({
   max: 100, // limit each IP to 100 requests per windowMs
 });
 
-
 router.post(
-  "/createuser", limiter,
+  "/createuser",
+  limiter,
   [
     body("name")
       .trim()
@@ -72,21 +77,22 @@ router.post(
         return res.status(400).json({ email: "Email already exists" });
       }
 
-     // Sanitize the enrollment before using it in the database query
-  const sanitizedEnrollment = sanitize(req.body.enrollment);
+      // Sanitize the enrollment before using it in the database query
+      const sanitizedEnrollment = sanitize(req.body.enrollment);
 
-  // Check if a user with the provided enrollment exists
-  existingUser = await User.findOne({ enrollment: sanitizedEnrollment });
+      // Check if a user with the provided enrollment exists
+      existingUser = await User.findOne({ enrollment: sanitizedEnrollment });
 
-  // If a user with the enrollment already exists, send an appropriate error response
-  if (existingUser) {
-    return res.status(400).json({ enrollment: "Enrollment number already exists" });
-  }
-
+      // If a user with the enrollment already exists, send an appropriate error response
+      if (existingUser) {
+        return res
+          .status(400)
+          .json({ enrollment: "Enrollment number already exists" });
+      }
 
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
-      
+
       const newUser = new User({
         name: req.body.name,
         enrollment: req.body.enrollment,
@@ -105,7 +111,7 @@ router.post(
         },
       };
       const token = jwt.sign(payload, JWT_SRT);
-      
+
       await newUser.save();
       res.status(201).json({ token });
     } catch (err) {
@@ -116,7 +122,8 @@ router.post(
 );
 
 router.post(
-  "/login", limiter, 
+  "/login",
+  limiter,
   [
     body("email").trim().isEmail().withMessage("Invalid email address"),
     body("password", "Password cannot be blank!!").exists(),
@@ -131,27 +138,29 @@ router.post(
     try {
       const { email, password } = req.body;
 
-  // Validate that email and password are provided
-  if (!email || !password) {
-    return res.status(400).json({ error: "Email and password are required" });
-  }
+      // Validate that email and password are provided
+      if (!email || !password) {
+        return res
+          .status(400)
+          .json({ error: "Email and password are required" });
+      }
 
-  // Sanitize the email before using it in the database query
-  const sanitizedEmail = sanitize(email);
+      // Sanitize the email before using it in the database query
+      const sanitizedEmail = sanitize(email);
 
-  // Find the user by email
-  const user = await User.findOne({ email: sanitizedEmail });
+      // Find the user by email
+      const user = await User.findOne({ email: sanitizedEmail });
 
-  // Check if the user exists
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-  }
-       // Validate the password
-  const isPasswordValid = await bcrypt.compare(password, user.password);
+      // Check if the user exists
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      // Validate the password
+      const isPasswordValid = await bcrypt.compare(password, user.password);
 
-  if (!isPasswordValid) {
-    return res.status(401).json({ message: "Invalid password" });
-  }
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: "Invalid password" });
+      }
 
       const payload = {
         user: {
@@ -170,7 +179,7 @@ router.post(
       payload.user.useremail = useremail;
       const token = jwt.sign(payload, JWT_SRT);
 
-      res.json({ token, isAdmin, isSubAdmin ,name,useremail});
+      res.json({ token, isAdmin, isSubAdmin, name, useremail });
     } catch (error) {
       console.error("Error during login:", error);
       res.status(500).json({ message: "Internal server error" });
@@ -178,7 +187,7 @@ router.post(
   }
 );
 
-router.post("/getuser", limiter,  fetchuser, async (req, res) => {
+router.post("/getuser", limiter, fetchuser, async (req, res) => {
   try {
     const userId = req.user.id;
     const user = await User.findById(userId).select("-password");
@@ -197,9 +206,9 @@ router.post("/getuser", limiter,  fetchuser, async (req, res) => {
   }
 });
 
-
 router.post(
-  "/createevent", limiter, 
+  "/createevent",
+  limiter,
   [
     body("eventname")
       .trim()
@@ -261,22 +270,23 @@ router.post(
     try {
       const { eventname } = req.body;
 
-  // Validate that the event name is provided
-  if (!eventname) {
-    return res.status(400).json({ error: "Event name is required" });
-  }
+      // Validate that the event name is provided
+      if (!eventname) {
+        return res.status(400).json({ error: "Event name is required" });
+      }
 
-  // Sanitize the event name before using it in the database query
-  const sanitizedEventName = sanitize(eventname);
+      // Sanitize the event name before using it in the database query
+      const sanitizedEventName = sanitize(eventname);
 
-  // Perform the database query using the sanitized event name
-  const existingEvent = await Event.findOne({ eventname: sanitizedEventName });
+      // Perform the database query using the sanitized event name
+      const existingEvent = await Event.findOne({
+        eventname: sanitizedEventName,
+      });
 
-  // Check if an event with the same name already exists
-  if (existingEvent) {
-    return res.status(400).json({ error: "Event already exists" });
-  }
-
+      // Check if an event with the same name already exists
+      if (existingEvent) {
+        return res.status(400).json({ error: "Event already exists" });
+      }
 
       const newEvent = new Event({
         eventname: req.body.eventname,
@@ -292,7 +302,7 @@ router.post(
         publisher: req.body.publisher,
         price: req.body.price,
         minparticipent: req.body.minparticipent,
-        maxparticipent: req.body.maxparticipent
+        maxparticipent: req.body.maxparticipent,
       });
 
       await newEvent.save();
@@ -307,7 +317,7 @@ router.post(
   }
 );
 
-router.get("/events",  limiter, async (req, res) => {
+router.get("/events", limiter, async (req, res) => {
   try {
     const events = await Event.find();
     return res.status(200).json(events);
@@ -317,17 +327,17 @@ router.get("/events",  limiter, async (req, res) => {
   }
 });
 
-router.get("/getallparticpent", limiter,  async (req,res) => {
+router.get("/getallparticpent", limiter, async (req, res) => {
   try {
-    const events = await Participant.find().populate('participants');
+    const events = await Participant.find().populate("participants");
     return res.status(200).json(events);
   } catch (error) {
     console.error("Error fetching events:", error);
     return res.status(500).json({ error: "Server error" });
   }
-})
+});
 
-router.post("/details", limiter,  async (req, res) => {
+router.post("/details", limiter, async (req, res) => {
   try {
     const { eventname } = req.body;
 
@@ -335,18 +345,18 @@ router.post("/details", limiter,  async (req, res) => {
     if (!eventname) {
       return res.status(400).json({ error: "Event name is required" });
     }
-  
+
     // Sanitize the event name before using it in the database query
     const sanitizedEventName = sanitize(eventname);
-  
+
     // Perform the database query using the sanitized event name
     const event = await Event.findOne({ eventname: sanitizedEventName });
-  
+
     // Check if the event exists
     if (!event) {
       return res.status(404).json({ error: "Event not found" });
     }
-  
+
     // Handle the case when the event is found
     return res.status(200).json({ event });
   } catch (error) {
@@ -355,8 +365,7 @@ router.post("/details", limiter,  async (req, res) => {
   }
 });
 
-
-router.get("/subadmin", limiter,  async (req, res) => {
+router.get("/subadmin", limiter, async (req, res) => {
   try {
     const subadmins = await User.find({ isSubAdmin: true });
     return res.status(200).json(subadmins);
@@ -366,40 +375,50 @@ router.get("/subadmin", limiter,  async (req, res) => {
   }
 });
 
-router.put("/updateentry", limiter,  async (req, res) => {
+router.put("/updateentry", limiter, async (req, res) => {
   const { name, useremail, eventname, entries } = req.body;
 
   try {
-     // Validate inputs to ensure they are of the expected type and format
-  if (typeof name !== 'string' || typeof useremail !== 'string' || typeof eventname !== 'string') {
-    return res.status(400).json({ error: 'Invalid input data' });
-  }
+    // Validate inputs to ensure they are of the expected type and format
+    if (
+      typeof name !== "string" ||
+      typeof useremail !== "string" ||
+      typeof eventname !== "string"
+    ) {
+      return res.status(400).json({ error: "Invalid input data" });
+    }
 
-  // Sanitize inputs if necessary to prevent injection attacks
-  const sanitizedName = sanitize(name);
-  const sanitizedUserEmail = sanitize(useremail);
-  const sanitizedEventName = sanitize(eventname);
-  const sanitizedEntries = sanitize(entries);
+    // Sanitize inputs if necessary to prevent injection attacks
+    const sanitizedName = sanitize(name);
+    const sanitizedUserEmail = sanitize(useremail);
+    const sanitizedEventName = sanitize(eventname);
+    const sanitizedEntries = sanitize(entries);
 
-  // Perform database operation using sanitized data
-  const updatedEvent = await Event.findOneAndUpdate(
-    { eventname: sanitizedEventName },
-    { entries: sanitizedEntries },
-    { new: true }
-  );
+    // Perform database operation using sanitized data
+    const updatedEvent = await Event.findOneAndUpdate(
+      { eventname: sanitizedEventName },
+      { entries: sanitizedEntries },
+      { new: true }
+    );
 
-  // Create a new entry in the Updation schema
-  const newUpdation = new Updation({ name: sanitizedName, useremail: sanitizedUserEmail, eventname: sanitizedEventName });
-  await newUpdation.save();
-  // Send response or perform other actions as needed
-  return res.status(200).json({ message: 'Event updated successfully', updatedEvent });
- } catch (error) {
+    // Create a new entry in the Updation schema
+    const newUpdation = new Updation({
+      name: sanitizedName,
+      useremail: sanitizedUserEmail,
+      eventname: sanitizedEventName,
+    });
+    await newUpdation.save();
+    // Send response or perform other actions as needed
+    return res
+      .status(200)
+      .json({ message: "Event updated successfully", updatedEvent });
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
-router.get("/getalluser", limiter, async (req,res) =>{
+router.get("/getalluser", limiter, async (req, res) => {
   try {
     const users = await User.find();
     return res.status(200).json(users);
@@ -409,7 +428,7 @@ router.get("/getalluser", limiter, async (req,res) =>{
   }
 });
 
-router.get("/getupdate", limiter, async (req,res) =>{
+router.get("/getupdate", limiter, async (req, res) => {
   try {
     const update = await Updation.find();
     return res.status(200).json(update);
@@ -419,21 +438,21 @@ router.get("/getupdate", limiter, async (req,res) =>{
   }
 });
 
-router.post('/checkuser', limiter,  async (req,res) => {
+router.post("/checkuser", limiter, async (req, res) => {
   const { email } = req.body;
 
   try {
-       // Validate email format
-   if (!email || typeof email !== 'string') {
-    return res.status(400).json({ error: 'Invalid email format' });
-  }
+    // Validate email format
+    if (!email || typeof email !== "string") {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
 
-  // Sanitize email to prevent NoSQL injection
-  const sanitizedEmail = sanitize(email);
+    // Sanitize email to prevent NoSQL injection
+    const sanitizedEmail = sanitize(email);
 
     // Find the user by email
-  const user = await User.findOne({ email: sanitizedEmail });
-    
+    const user = await User.findOne({ email: sanitizedEmail });
+
     if (user) {
       // If user exists, send response indicating user exists
       res.json({ exists: true });
@@ -443,25 +462,25 @@ router.post('/checkuser', limiter,  async (req,res) => {
     }
   } catch (error) {
     // If an error occurs, send error response
-    console.error('Error checking user:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error checking user:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
-})
+});
 
-router.post('/deleteAccount', limiter,  async (req, res) => {
+router.post("/deleteAccount", limiter, async (req, res) => {
   const { email, password } = req.body;
 
   try {
-   // Validate email format
-   if (!email || typeof email !== 'string') {
-    return res.status(400).json({ error: 'Invalid email format' });
-  }
+    // Validate email format
+    if (!email || typeof email !== "string") {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
 
-  // Sanitize email to prevent NoSQL injection
-  const sanitizedEmail = sanitize(email);
+    // Sanitize email to prevent NoSQL injection
+    const sanitizedEmail = sanitize(email);
 
-  // Find the user by email
-  const user = await User.findOne({ email: sanitizedEmail });
+    // Find the user by email
+    const user = await User.findOne({ email: sanitizedEmail });
 
     // If user found, compare hashed password
     if (user) {
@@ -469,10 +488,12 @@ router.post('/deleteAccount', limiter,  async (req, res) => {
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (passwordMatch) {
-       // If passwords match, delete the user
-       await User.deleteOne({ email: sanitizedEmail });
+        // If passwords match, delete the user
+        await User.deleteOne({ email: sanitizedEmail });
 
-        return res.status(200).json({ message: "Account deleted successfully" });
+        return res
+          .status(200)
+          .json({ message: "Account deleted successfully" });
       } else {
         // If password does not match, send error response
         return res.status(400).json({ error: "Invalid email or password" });
@@ -487,15 +508,14 @@ router.post('/deleteAccount', limiter,  async (req, res) => {
   }
 });
 
-
-router.post('/sendemail', limiter,  SendEmail);
-router.post('/verifyotp',  limiter, VerifyOTP);
-router.post('/resetpassword',  limiter, ResetPassword);
-router.post('/registersuccess', limiter,  SignUpSucess);
-router.post('/payment', limiter,  newPayment);
-router.post('/status/:txnId', limiter,  checkStatus);
-router.post('/eventregistration', limiter, Eventregistration);
-router.post('/registerdevent', limiter, Registerdevent);
+router.post("/sendemail", limiter, SendEmail);
+router.post("/verifyotp", limiter, VerifyOTP);
+router.post("/resetpassword", limiter, ResetPassword);
+router.post("/registersuccess", limiter, SignUpSucess);
+router.post("/payment", limiter, newPayment);
+router.post("/status/:txnId", limiter, checkStatus);
+router.post("/eventregistration", limiter, Eventregistration);
+router.post("/registerdevent", limiter, Registerdevent);
 router.post("/transactions", limiter, Transactions);
 
 export default router;
