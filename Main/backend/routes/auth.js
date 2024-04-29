@@ -331,14 +331,30 @@ router.put("/updateentry", limiter,  async (req, res) => {
   const { name, useremail, eventname, entries } = req.body;
 
   try {
-    const updatedEvent = await Event.findOneAndUpdate({ eventname }, { entries }, { new: true });
+     // Validate inputs to ensure they are of the expected type and format
+  if (typeof name !== 'string' || typeof useremail !== 'string' || typeof eventname !== 'string') {
+    return res.status(400).json({ error: 'Invalid input data' });
+  }
 
-     // Create a new entry in the Updation schema
-     const newUpdation = new Updation({ name, useremail, eventname });
-     await newUpdation.save();
+  // Sanitize inputs if necessary to prevent injection attacks
+  const sanitizedName = sanitize(name);
+  const sanitizedUserEmail = sanitize(useremail);
+  const sanitizedEventName = sanitize(eventname);
+  const sanitizedEntries = sanitize(entries);
 
-    res.json(updatedEvent);
-  } catch (error) {
+  // Perform database operation using sanitized data
+  const updatedEvent = await Event.findOneAndUpdate(
+    { eventname: sanitizedEventName },
+    { entries: sanitizedEntries },
+    { new: true }
+  );
+
+  // Create a new entry in the Updation schema
+  const newUpdation = new Updation({ name: sanitizedName, useremail: sanitizedUserEmail, eventname: sanitizedEventName });
+  await newUpdation.save();
+  // Send response or perform other actions as needed
+  return res.status(200).json({ message: 'Event updated successfully', updatedEvent });
+ } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
