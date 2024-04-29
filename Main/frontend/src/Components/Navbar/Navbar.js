@@ -59,7 +59,6 @@ export default function Navbar() {
   };
 
   const handleCategoryChange = (category) => {
-    console.log("Selected category:", category);
     setCategory(category);
   };
 
