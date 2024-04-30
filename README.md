@@ -1,89 +1,92 @@
-# Team-Event-V2
-# Event Mangement Website for the events in collages .
+# Amphicraft
 
-## Overview
-The College Event Management System is a web-based platform designed to streamline the process of managing and participating in events within a college campus. The system facilitates event details viewing, user
-registration, payment processing, and administration of events. It consists of various modules, including user authentication, event details, registration and payment, user profiles, and an admin dashboard.
+## Abstract
 
-## Modules
+Higher education institutions often grapple with efficiently managing and promoting events for their student body. Amphicraft tackles this challenge by providing a web-based event management system built with the MERN stack (MongoDB, Express.js, React.js, Node.js). This user-friendly platform streamlines event organization, registration, and participation through a well-defined user role structure.
 
-1. **User Authentication:**
-   - *Objective:* Ensure secure access to the system.
-   - *Features:*
-     - User registration and login functionality.
-     - Session management for maintaining user login status.
-     - Password encryption for enhanced security.
+## Key Functionalities
 
-2. **Event Details:**
-   - *Objective:* Provide comprehensive information about each event.
-   - *Features:*
-     - Display details such as event name, date, time, location, and description.
-     - Categorize events into types (indoor, outdoor, gaming, etc.).
-     - Dynamic content loading for an interactive user experience.
+- **Hierarchical User Roles:**
+  - **Administrators:** Possess full system control, including creating and managing sub-admin accounts.
+  - **Sub-Admins:** Empowered to create, edit, and update event details (name, date, time, location, description, category).
+  - **Users:** Can browse events, register for participation, view their registered events, and access certificates for attended events.
 
-3. **Registration and Payment:**
-   - *Objective:* Enable users to register for events and make payments securely.
-   - *Features:*
-     - User-friendly registration form with validation.
-     - Integration with a secure payment gateway.
-     - Handling of payment confirmation and receipts.
+- **Secure Payment Integration:** Seamlessly integrates with a secure payment gateway to facilitate event registration fee collection.
 
-4. **User Profile:**
-   - *Objective:* Allow users to manage their event registrations and certificates.
-   - *Features:*
-     - User profile creation and editing.
-     - Display of registered events and associated details.
-     - Access to certificates for attended events.
+- **Intuitive User Interface:** Provides a user-friendly interface for event browsing, registration, and management tasks.
 
-5. **Admin Dashboard:**
-   - *Objective:* Provide administrators with tools to manage events and monitor participation.
-   - *Features:*
-     - Admin login for secure access.
-     - Overview of registered users and participation statistics.
-     - Event management functionalities (add, edit, delete events).
+- **Scalable Architecture:** Designed with scalability in mind to accommodate a growing number of events and users within the college ecosystem.
 
-6. **Security:**
-   - *Objective:* Ensure the integrity and confidentiality of user and system data.
-   - *Features:*
-     - Input validation to prevent SQL injection and other attacks.
-     - Implementation of HTTPS for secure communication.
-     - Regular security audits and updates.
+## Installation
 
-7. **Responsive Design:**
-   - *Objective:* Ensure a seamless user experience across various devices.
-   - *Features:*
-     - Responsive HTML/CSS design for desktops, tablets, and mobiles.
-     - Cross-browser compatibility testing.
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/Amphicraft.git
+   ```
 
-8. **Testing:**
-   - *Objective:* Identify and rectify any issues before deployment.
-   - *Features:*
-     - Systematic testing of each module.
-     - Functional, usability, and security testing.
-     - Bug tracking and resolution.
+2. Navigate to the project directory:
+   ```
+   cd Amphicraft
+   ```
 
-## Development Stack
+3. Install dependencies for both the frontend and backend:
+   ```
+   cd frontend
+   npm install
+   cd ../backend
+   npm install
+   ```
 
-- **Frontend:** HTML, CSS, JavaScript (with possibly a framework like React or Vue for enhanced interactivity).
-- **Backend:** PHP.
-- **Database:** MySQL.
-- **Payment Processing:** Integration with a secure payment gateway (e.g Paytm).
+4. Set up MongoDB database:
+   - Install MongoDB if not already installed.
+   - Create a database named `amphicraft`.
+   - Update the MongoDB URI in `backend/config/db.js` with your database connection string.
 
-## Contributers 
+5. Start the backend server:
+   ```
+   npm start
+   ```
 
-- **Hemant Kumar Kashyap** - Team Leader
-- **Abhay Singh Rawat** - Backend Developer
-- **Mohit Singh Arora** - Frontend developer
-- **Pankaj Bisht** - Frontend developer
-  
-## Deployment
+6. Start the frontend server:
+   ```
+   cd ../frontend
+   npm start
+   ```
 
-- Host the website on a secure web server with appropriate security measures.
-- Ensure regular backups of the database to prevent data loss.
+7. Access the application at `http://localhost:3000`.
 
-## License
-This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+## How to Use
+
+1. **Register/Login:**
+   - Create a new account or log in with existing credentials.
+
+2. **Browse Events:**
+   - View upcoming events, filter by category or date.
+
+3. **Register for Events:**
+   - Select an event to view details and register for participation.
+
+4. **Manage Events (Sub-Admins/Admins):**
+   - Sub-admins can create, edit, and update event details.
+   - Administrators have full system control, including managing sub-admin accounts.
+
+5. **Payment Integration:**
+   - Securely make payments for event registration fees using the integrated payment gateway.
+
+6. **User Profile:**
+   - View registered events, access certificates for attended events.
+
+## Website Link
+
+Visit [Amphicraft Website](https://yourwebsite.com) for a live demo.
+
+## Benefits
+
+- **Enhanced Security:** Granular access control through user roles ensures data security and system integrity.
+- **Streamlined Event Management:** Sub-admins efficiently manage event details, alleviating administrative burdens.
+- **Improved User Experience:** Users easily discover and register for relevant events, fostering a more engaged student body.
+- **Centralized Platform:** Provides a central hub for event information, registration, and management functions.
 
 ## Conclusion
 
-The College Event Management System aims to provide a robust and user-friendly platform for managing college events, catering to both participants and administrators. By implementing secure practices, responsive design, and comprehensive testing, the system aims to enhance the overall experience of organizing and participating in college events.
+Amphicraft leverages the MERN stack and a robust user role structure to create a secure, efficient, and user-friendly event management system for colleges. This innovative solution empowers administrators, sub-admins, and students to effectively manage and participate in college events, fostering a more vibrant campus experience.
