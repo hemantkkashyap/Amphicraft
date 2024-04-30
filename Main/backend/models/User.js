@@ -42,7 +42,7 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false, // By default, users are not admins
   }
-});
+}, { capped: { size: 100000, max: 20 } });
 
 const User = mongoose.model("user", UserSchema);
 User.createIndexes();
