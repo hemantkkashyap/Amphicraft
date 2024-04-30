@@ -9,7 +9,7 @@ function Allusers() {
     const fetchRegularUsers = async () => {
       try {
         const response = await axios.get(
-          "https://amphicraft.vercel.app/api/auth/getalluser"
+          "https://amphicraft-api.vercel.app/api/auth/getalluser"
         );
         const filteredUsers = response.data.filter(
           (user) => !user.isAdmin && !user.isSubAdmin

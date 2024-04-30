@@ -54,7 +54,7 @@ export default function Event() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("https://amphicraft.vercel.app/api/auth/events");
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/events");
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
@@ -115,7 +115,7 @@ export default function Event() {
     console.log(useremail);
     try {
       const response = await fetch(
-        "https://amphicraft.vercel.app/api/auth/updateentry",
+        "https://amphicraft-api.vercel.app/api/auth/updateentry",
         {
           method: "PUT",
           headers: {

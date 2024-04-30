@@ -37,7 +37,7 @@ function Addevent() {
     try {
       // Make a POST request to the server to create a new event
       const response = await axios.post(
-        "https://amphicraft.vercel.app/api/auth/createevent",
+        "https://amphicraft-api.vercel.app/api/auth/createevent",
         eventData
       );
       console.log("Event created:", response.data);

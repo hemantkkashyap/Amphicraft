@@ -9,7 +9,7 @@ function AllRegister() {
     const fetchdetails = async () => {
       try {
         const response = await axios.get(
-          "https://amphicraft.vercel.app/api/auth/allregister"
+          "https://amphicraft-api.vercel.app/api/auth/allregister"
         );
         setdetails(response.data);
       } catch (error) {

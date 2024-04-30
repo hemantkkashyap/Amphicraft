@@ -46,7 +46,7 @@ export default function SubadminDashboard() {
   // Function to fetch users data from the API
   const fetchUsersData = async () => {
     try {
-      const response = await fetch("https://amphicraft.vercel.app/api/auth/getalluser");
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/getalluser");
       const data = await response.json();
       setUsersData(data);
 
@@ -66,7 +66,7 @@ export default function SubadminDashboard() {
   // Function to fetch total number of events
   const fetchEventsCount = async () => {
     try {
-      const response = await fetch("https://amphicraft.vercel.app/api/auth/events");
+      const response = await fetch("https://amphicraft-api.vercel.app/api/auth/events");
       const eventsData = await response.json();
       // Assuming eventsData is an array of events, you can get its length
       setTotalEventsCount(eventsData.length);

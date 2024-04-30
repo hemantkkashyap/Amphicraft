@@ -83,7 +83,7 @@ export default function Signup() {
   
     try {
       const response = await fetch(
-        "https://amphicraft.vercel.app/api/auth/createuser",
+        "https://amphicraft-api.vercel.app/api/auth/createuser",
         {
           method: "POST",
           headers: {
@@ -106,7 +106,7 @@ export default function Signup() {
         // If user is registered successfully, send email
         history("/login");
         const emailResponse = await fetch(
-          "https://amphicraft.vercel.app/api/auth/registersuccess",
+          "https://amphicraft-api.vercel.app/api/auth/registersuccess",
           {
             method: "POST",
             headers: {

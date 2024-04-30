@@ -9,7 +9,7 @@ function Subadmin() {
     const fetchSubAdmins = async () => {
       try {
         const response = await axios.get(
-          "https://amphicraft.vercel.app/api/auth/subadmin"
+          "https://amphicraft-api.vercel.app/api/auth/subadmin"
         );
         setSubAdmins(response.data);
       } catch (error) {

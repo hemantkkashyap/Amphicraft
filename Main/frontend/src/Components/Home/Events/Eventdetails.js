@@ -17,7 +17,7 @@ export default function EventDetail() {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await fetch("https://amphicraft.vercel.app/api/auth/details", {
+        const response = await fetch("https://amphicraft-api.vercel.app/api/auth/details", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
