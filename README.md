@@ -1,4 +1,4 @@
-# Amphicraft
+# AMPHICRAFT
 
 ## Abstract
 
@@ -33,7 +33,7 @@ Higher education institutions often grapple with efficiently managing and promot
    ```
    cd frontend
    npm install
-   cd ../backend
+   cd backend
    npm install
    ```
 
@@ -44,12 +44,13 @@ Higher education institutions often grapple with efficiently managing and promot
 
 5. Start the backend server:
    ```
+   cd backend
    npm start
    ```
 
 6. Start the frontend server:
    ```
-   cd ../frontend
+   cd frontend
    npm start
    ```
 
@@ -78,7 +79,7 @@ Higher education institutions often grapple with efficiently managing and promot
 
 ## Website Link
 
-Visit [Amphicraft Website](https://yourwebsite.com) for a live demo.
+Visit [Amphicraft Website](https://amphicraft.vercel.app/) for a live demo.
 
 ## Benefits
 
@@ -87,6 +88,17 @@ Visit [Amphicraft Website](https://yourwebsite.com) for a live demo.
 - **Improved User Experience:** Users easily discover and register for relevant events, fostering a more engaged student body.
 - **Centralized Platform:** Provides a central hub for event information, registration, and management functions.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+- **Hemant Kumar Kashyap**
+- **Abhay Singh Rawat**
+- **Mohit Singh Arora**
+- **Pankaj Bisht** 
+- 
 ## Conclusion
 
 Amphicraft leverages the MERN stack and a robust user role structure to create a secure, efficient, and user-friendly event management system for colleges. This innovative solution empowers administrators, sub-admins, and students to effectively manage and participate in college events, fostering a more vibrant campus experience.
