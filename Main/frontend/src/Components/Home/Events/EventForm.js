@@ -87,7 +87,7 @@ export default function EventForm() {
           transactionId: transactionid,
         };
         axios
-          .post("https://amphicraft-api.vercel.app/api/auth/payment", data)
+          .post("https://amphicraft-api.vercel.app/api/payment", data)
           .then((res) => {
             window.location.href = res.data;
           })
