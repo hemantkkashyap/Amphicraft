@@ -17,7 +17,7 @@ const newPayment = async (req, res) => {
             merchantUserId: req.body.MUID,
             name: req.body.name,
             amount: req.body.amount * 100,
-            redirectUrl: `https://amphicraft-api.vercel.app/api/status/${merchantTransactionId}`,
+            redirectUrl: `https://amphicraft.vercel.app/api/status/${merchantTransactionId}`,
             redirectMode: 'POST',
             mobileNumber: req.body.number,
             paymentInstrument: {
