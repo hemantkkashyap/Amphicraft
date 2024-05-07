@@ -19,7 +19,6 @@ import Subadmin from "./Components/Admin/Subadmin";
 import Success from "./Components/Payment/Success";
 import Failure from "./Components/Payment/Failure";
 import Navbar from "./Components/Navbar/Navbar";
-import Flexbar from "./Components/Navbar/Flexbar";
 import Eventdetails from "./Components/Home/Events/Eventdetails";
 import EventForm from "./Components/Home/Events/EventForm";
 import Policy from "./Components/Footer/Policy";
@@ -41,7 +40,6 @@ function App() {
           <Router>
             <ScrollToTop />
             <Navbar />
-            <Flexbar />
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/about" element={<About />} />

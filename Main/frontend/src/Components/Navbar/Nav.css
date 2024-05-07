@@ -1,143 +1,155 @@
-.navbar{
-    border-radius: 10px;
+.navbar.dark{
     position: fixed;
     display: flex;
+    justify-content: center;
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
     height: 70px;
-    background: white;
+    background: var(--bg-1);
     z-index: 100;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.171);
 }
 
-.navbar .part1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 100%;
-    padding-left: 15px;
+.navbar.dark .part1{
+  display: flex;
+  width: 30%;
+  height: 100%;
 }
-.navbar .part1 img{
-    height: 50%;
+.navbar.dark .part1 svg{
+  display: none;
 }
-.navbar .part1 #bar{
-    margin-right: 5px;
-    color: black;
-    display: none;
+.navbar.dark .part2{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 35px;
+  width: 60%;
+  height: 100%;
 }
-.navbar .part1 #bar:hover{
-    background: #ddd;
+.navbar.dark .part1 span{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
 }
-.navbar .part2{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 60%;
-    height: 90%;
-}
-.navbar .part2 .navitem{
-  color: black;
-    cursor: pointer;
-    width: 100px;
-    height: 75%;
-    font-family: "Poppins";
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5px;
-    background: none;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
+.navbar.dark .part1 span #logo{
+  width: 40%;
 }
 
-.navbar .part2 .navitem:hover{
-background: rgb(10 10 10/24%);
-}
-.navbar .part2 #navitem{
+.navbar.dark .part2 .navitem{
   font-size: 16px;
-  font-family: "Poppins";
+color: white;
+}
+.navbar.dark .part2 .theme{
   display: flex;
   justify-content: center;
-  width: 100px;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  outline: 2px solid var(--border-1);
 }
-
-.navbar .part2 #logout{
-    cursor: pointer;
-    margin: 15px;
-    font-size: 20px;
+.navbar.dark .part2 .theme img{
+  width: 80%;
 }
-.navbar .part2 .navitem:focus{
-    border: none;
-}
-.navbar .part2 #event{
-    height:30px ;
-    width: 100px;
-}
-.navbar .part2 .login{
-  color: black;
-    cursor: pointer;
-    width: 120px;
-    height: 40px;
-    font-family: "Poppins";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5px;
-    background:none;
-    border-radius: 10px;
-    border: 1px solid rgb(43 51 53);
-    font-size: 16px;
-    margin: 5px;
-}
-.navbar.dark .part2 .login{
+.navbar.dark .part2 .login,.navbar.dark .part2 .sign{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+background: linear-gradient(to right, red, purple);
   color: white;
-  border: 1px solid white;
 }
-.navbar .part2 .sign{
-    cursor: pointer;
-    width: 120px;
-    height: 40px;
-    font-family: "Poppins";
-    display: flex;
-   justify-content: center;
-    align-items: center;
-    padding-top: 5px;
-    background:rgb(43 51 53);
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    color: white;
-    margin: 5px;
+.navbar.dark .part2 .login button,.navbar.dark .part2 .sign button{
+  width: 93%;
+  height: 88%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--bg-1);
+}
+.navbar.dark .part2 .login button:hover,.navbar.dark .part2 .sign button:hover{
+  background: #fff;
+  font-weight: 500;
+  color: var(--bg-1);
 }
 
-.navbar.dark .part2 .navitem:hover{
-    background: rgb(255 255 255 /4%);
-}
-.navbar .part2 .navitem p{
-    line-height: 16px;
-    margin: 5px;
-}
-.navbar .part2 .profilelink img{
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  overflow: scroll;
+  z-index: 200;
   width: 100%;
-  border-radius: 50%;
+  left: -100%;
+  height: 100%;
+  transition: var(--transition-2);
+  background: var(--bg-1);
 }
-.navbar .part2 .profilelink{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    color: #fff;
-    margin-top: 5px;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    background: white;
+
+.sidebar.active{
+  left: 0;
+}
+.sidebar span{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 20px;
+  width: 80%;
+  height: 100px;
+}
+.sidebar span #logo{
+  width: 85%;
+}
+.sidebar .part2{
+  display: flex;
+  gap: 20px;
+  padding-left: 50px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+}
+.sidebar .part2 .flexitem{
+  font-size: 22px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.sidebar .part2 .flexitem svg{
+  width: 50px;
+}
+.sidebar .part2 .flexitem p{
+  color: white;
+}
+.sidebar .part2 .flexitem select{
+  background: var(--bg-1);
+  border: none;
+  color: white;
+  font-size: 22px;
+}
+.sidebar .part2 .flexitem option{
+  font-size: 16px;
+}
+.sidebar.active .close{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(22, 76, 255, 0.176);
+  border-radius: 15px;
+  border: 3px solid rgb(33, 122, 255);
 }
 .flexsidebar{
     position: fixed;
@@ -233,22 +245,42 @@ background: rgb(10 10 10/24%);
 
 }
 
-@media (max-width:400px){
+@media (max-width:600px){
     .navbar{
         width: 100%;
     }
-    .navbar .part1{
+    .navbar.dark .part1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 10px;
-      width: 50%;
+      width: 70%;
     }
-    .navbar .part2{
-      display: none;
+    .navbar.dark .part2{
+      gap: 10px;
+      width: 30%;
     }
-    .navbar .part2 .navitem,.navbar .part2 .login,.navbar .part2 .sign{
+     .navbar.dark .part1 span{
+      width: 100%;
+     }
+
+     .navbar.dark .part1 span #logo{
+      width: 75%;
+     }
+    .navbar.dark .part2 .navitem,.navbar.dark .part2 a{
      display: none;
     }
-    .navbar .part1 #bar{
+    .navbar.dark .part1 #bar {
+      border: 3px solid var(--border-1);
+      border-radius: 15px;
+      height: 50px;
+      width: 50px;
+      font-size: 30px;
+      padding: 8px;
       color: white;
+        display: block;
+    }
+    .navbar.dark .part1 #bar svg{
         display: block;
     }
     .flexsidebar.open{
@@ -276,22 +308,7 @@ background: rgb(10 10 10/24%);
   .theme-toggle:hover {
     text-decoration: underline;
   }
-  .navbar.light {
-    background: #ffffff; /* Light background color */
-  }
-  
-  /* CSS for dark theme */
-  .navbar.dark {
-    background: #3c3c3c; /* Dark background color */
-  }  
 
-  .navbar.dark .part2 .navitem{
-    color: white;
-  }
-
-  .navbar.dark .part2 .container{
-    margin-left: 20px;
-  }
   .switch {
     position: relative;
     display: inline-block;

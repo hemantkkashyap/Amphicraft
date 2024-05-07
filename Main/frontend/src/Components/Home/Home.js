@@ -53,6 +53,10 @@ export default function Home() {
   return (
     <>
       <div className={`Main ${theme}`}>
+        <span className="shadow1"></span>
+        <span className="shadow2"></span>
+        <span className="shadow3"></span>
+        <span className="shadow4"></span>
         <div className="contanier1" data-aos="fade-up" data-aos-offset="0">
           <div className="part1">
             <div class="card">
