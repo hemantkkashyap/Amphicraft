@@ -120,6 +120,20 @@ background: linear-gradient(to right, red, purple);
   gap: 10px;
   width: 100%;
 }
+.sidebar .part2 .profileitem{
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 10px;
+  width: 100%;
+}
+.sidebar .part2 .profileitem img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .sidebar .part2 .flexitem svg{
   width: 50px;
 }
@@ -267,7 +281,7 @@ background: linear-gradient(to right, red, purple);
      .navbar.dark .part1 span #logo{
       width: 75%;
      }
-    .navbar.dark .part2 .navitem,.navbar.dark .part2 a{
+    .navbar.dark .part2 .navitem,.navbar.dark .part2 a,.navbar.dark .part2 #logout{
      display: none;
     }
     .navbar.dark .part1 #bar {
