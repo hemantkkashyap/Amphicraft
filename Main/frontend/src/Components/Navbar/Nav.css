@@ -79,6 +79,13 @@ background: linear-gradient(to right, red, purple);
   color: var(--bg-1);
 }
 
+.profilelink{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+}
+
 .sidebar{
   display: flex;
   flex-direction: column;
@@ -129,7 +136,7 @@ background: linear-gradient(to right, red, purple);
   gap: 10px;
   width: 100%;
 }
-.sidebar .part2 .profileitem img{
+.sidebar .part2 .profileitem .profilelink img{
   width: 50px;
   height: 50px;
   border-radius: 50%;

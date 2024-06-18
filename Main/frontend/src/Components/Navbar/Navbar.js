@@ -124,7 +124,7 @@ export default function Navbar() {
               <Link to={"/profile"} onClick={toggleSidebar}>
                 <div className="profileitem">
                   <button className="profilelink">
-                    <img src="./images/user.jpg" alt="" />
+                    <img id="profileimage" src="./images/user.jpg" alt="" />
                   </button>
                   <p>Your Profile</p>
                 </div>
@@ -324,7 +324,7 @@ export default function Navbar() {
                 <Link to={"/profile"} onClick={handleLinkClick}>
                   <button className="profilelink">
                     {" "}
-                    <img src="./images/user.jpg" alt="" />
+                    <img className="profileimage" src="" alt="" />
                   </button>
                 </Link>
                 <FontAwesomeIcon

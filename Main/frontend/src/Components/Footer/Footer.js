@@ -79,30 +79,10 @@ export default function Footer() {
                   marginRight: "10px",
                 }}
               />
-              pankajrajpoot@gmail.com
+              harishmaru@gmail.com
             </li>
-            <li>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                style={{
-                  color: "white",
-                  fontSize: "1.3em",
-                  marginRight: "10px",
-                }}
-              />
-              mohitarora@gmail.com
-            </li>
-            <li>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                style={{
-                  color: "white",
-                  fontSize: "1.3em",
-                  marginRight: "10px",
-                }}
-              />
-              abhaysingh@gmail.com
-            </li>
+
+
           </ul>
         </div>
         <div className="joinus">

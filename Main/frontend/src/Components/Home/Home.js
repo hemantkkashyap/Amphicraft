@@ -13,7 +13,7 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
   const originalText =
-    "Where the convergence of creativity and technology brings events to life. Led by the visionary minds of Abhay, Mohit, Hemant, and Pankaj, we invite you to immerse yourself in a world where participation is just a click away. Explore our virtual realm, where not only do we curate unforgettable experiences, but you can also become an active participant in the magic. Let's embark on this journey together, where every event is an opportunity to make memories and connections that last a lifetime";
+    "Where the convergence of creativity and technology brings events to life. Led by the visionary minds of Hemant and Harish, we invite you to immerse yourself in a world where participation is just a click away. Explore our virtual realm, where not only do we curate unforgettable experiences, but you can also become an active participant in the magic. Let's embark on this journey together, where every event is an opportunity to make memories and connections that last a lifetime";
 
   useEffect(() => {
     const elems = document.querySelectorAll(".contanier1 .part2 .elem");

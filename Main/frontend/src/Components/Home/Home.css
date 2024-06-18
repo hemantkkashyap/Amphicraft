@@ -531,8 +531,7 @@
     height: 100vh;
     background-position: 'top';
     color: white;
-    border: 1px solid black;
-    background: url("/public/images/Ourteam.jpg"); /* Adjust the path as necessary */
+    border: 1px solid black;/* Adjust the path as necessary */
     background-size: cover; 
   }
 
