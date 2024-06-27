@@ -49,7 +49,7 @@ export default function Event() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/events");
+      const response = await fetch("https://amphicraft-api.vercel.app//api/auth/events");
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
