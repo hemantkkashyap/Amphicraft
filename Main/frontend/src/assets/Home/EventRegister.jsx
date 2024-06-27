@@ -83,7 +83,7 @@ export default function EventRegister() {
 
     try {
       const response = await axios.post(
-        "https://amphicraft-api.vercel.app//api/auth/eventregistration",
+        "https://amphicraft-api.vercel.app/api/auth/eventregistration",
         participantDetails
       );
 
@@ -96,7 +96,7 @@ export default function EventRegister() {
           transactionId: transactionid,
         };
         axios
-          .post("https://amphicraft-api.vercel.app//api/payment", data)
+          .post("https://amphicraft-api.vercel.app/api/payment", data)
           .then((res) => {
             window.location.href = res.data;
           })
