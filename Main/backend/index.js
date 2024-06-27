@@ -15,7 +15,7 @@ const port =5000;
 
 // Enable CORS for specific origins
 app.use(cors({
-  origin: 'https://amphicraft.vercel.app', 
+  origin: 'https://amphicraft.vercel.app/', 
   allowedHeaders: ['Content-Type', 'Authorization', 'auth-token']
 }));
 
