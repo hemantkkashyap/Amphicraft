@@ -1119,11 +1119,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: var(--bg-1);
+  background: white;
 }
 
 body::-webkit-scrollbar-thumb {
-  border: 5px solid var(--bg-1);
+  border: 3px solid var(--bg-4);
   background: hsla(0, 0%, 100%, 0.1);
   border-radius: 20px;
   box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
@@ -1138,5 +1138,5 @@ body::-webkit-scrollbar-button {
   height: 60px;
 }
 body::-webkit-scrollbar {
-  background: var(--bg-1);
+  background: white;
 }

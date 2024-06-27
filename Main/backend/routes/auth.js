@@ -15,7 +15,7 @@ import Transactions from "../Controller/Transaction.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
-const JWT_SRT = process.env.JWT_SECERT;
+const JWT_SRT = 'hemantkashyap';
 
 const router = express.Router();
 
@@ -290,7 +290,7 @@ router.get("/getallparticpent", async (req,res) => {
 router.post("/details", async (req, res) => {
   try {
     const { eventname } = req.body;
-    console.log(eventname);
+   
     if (!eventname) {
       return res.status(400).json({ error: "Event name is required" });
     }

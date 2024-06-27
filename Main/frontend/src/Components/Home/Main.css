@@ -1,0 +1,326 @@
+nav {
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 6rem;
+  color: #fff;
+}
+
+nav .part1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30%;
+  height: 100%;
+}
+
+nav .part1 .item1 {
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+}
+
+nav .part1 .item1 img{
+  width: 100%;
+}
+nav .part2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 50%;
+  height: 100%;
+}
+nav .part2 .item1,
+nav .part2 .item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+nav .part2 .item1 img,
+nav .part2 .item2 img{
+  width: 80%;
+}
+.contanier {
+  color: #fff;
+  background: #00B9CB;
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.contanier .circle1{
+  position: absolute;
+  top: -20%;
+  left: 40%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #2B60E7;
+  box-shadow: 1px 16px 20px 0px rgba(0, 0, 0, 0.3);
+}
+.contanier .circle2{
+  background: #2B60E7;
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: -13px 14px 20px 0px rgba(0, 0, 0, 0.3);
+}
+.contanier .circle3{
+  background: #2B60E7;
+  position: absolute;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  box-shadow: 15px 16px 20px 0px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
+}
+.contanier .card{
+  position: absolute;
+  width: 350px;
+  height: 220px;
+  border-radius: 20px;
+  box-shadow: -11px 14px 20px 0px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+.contanier #card1{
+  bottom: 25%;
+  left: 5%;
+}
+.contanier #card2{
+  bottom: 18%;
+  left: 10%;
+}
+.contanier #card3{
+  bottom: 10%;
+  left: 15%;
+}
+.contanier .textbox {
+position: absolute;
+right:10%;
+  text-align: center;
+  font-size: 25px;
+  width: 45%;
+  height: 250px;
+}
+
+.features {
+  padding-top: 90px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 140vh;
+}
+.features .circle{
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(227, 227, 227, 0.361);
+}
+.features .textbox {
+  text-align: center;
+  font-size: 25px;
+  width: 60%;
+  height: 70px;
+}
+.features .box {
+  width: 200px;
+  height: 55px;
+  border-radius: 15px;
+  border: 2px solid var(--bg-4);
+}
+
+.features .part2 {
+  padding: 50px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 50px;
+  width: 90%;
+  height: 80%;
+}
+
+.features .part2 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+.features .part2 .card .part1{
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border-radius:20px;
+  border: 2px solid var(--bg-4);
+}
+.features .part2 .card .part22{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+text-align: center;
+  width: 90%;
+  height: 40%;
+}
+.features .part2 .card .part22 h2{
+  font-size: 27px;
+}
+.features .part2 .card .part22 p{
+  margin: 10px;
+  font-size: 20px;
+}
+.features .part2 .card .part3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 50%;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid var(--bg-4);
+}
+.gallery {
+  padding: 50px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 300px 300px 300px; /* Set minimum row height */
+  grid-template-rows: 100px 100px 100px 100px 100px 100px 100px;
+  width: 100%;
+  grid-gap: 10px;
+  height: 110vh;
+}
+.gallery .card1 {
+  grid-area: 1 / 1 / 4 / 1;
+  border-radius: 15px;
+  box-shadow: var(--shadow-4);
+  border: 2px solid var(--bg-4);
+}
+.gallery .card2 {
+  grid-area: 1 / 2 / 5 / 2;
+  border-radius: 15px;
+  box-shadow: var(--shadow-4);
+  border: 2px solid var(--bg-4);
+}
+.gallery .card3 {
+  grid-area: 1 / 3 / 3 / 3;
+  border-radius: 15px;
+  box-shadow: var(--shadow-4);
+  border: 2px solid var(--bg-4);
+}
+.gallery .card6{
+    grid-area: 3 / 3 / 7 / 3;
+    border-radius: 15px;
+    box-shadow: var(--shadow-4);
+    border: 2px solid var(--bg-4);
+  }
+  .gallery .card4{
+    grid-area: 4 / 1 / 7 / 1;
+    border-radius: 15px;
+    box-shadow: var(--shadow-4);
+    border: 2px solid var(--bg-4);
+  }
+  .gallery .card5{
+    grid-area: 5 / 2 / 7 / 2;
+    border-radius: 15px;
+    box-shadow: var(--shadow-4);
+    border: 2px solid var(--bg-4);
+  }
+
+.logos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    width: 100%;
+    height:30vh;
+}
+.logoscroller {
+    max-width: 1280px;
+}
+
+.scroller_inner {
+    padding: 1rem 0;
+    display: flex;
+    gap: 2.2rem;
+    flex-wrap: wrap;
+}
+.scroller_inner img{
+  height: 60px;
+}
+.logoscroller[data-animated="true"] {
+    overflow: hidden;
+    --webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.logoscroller[data-animated="true"] .scroller_inner {
+    flex-wrap: nowrap;
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+.logoscroller[data-duration="fast"] {
+    --animation-duration: 20s;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - .5rem));
+    }
+}
+
+@media (max-width:600px){
+
+  .contanier{
+    overflow: hidden;
+  }
+
+  .contanier .textbox{
+    width: 80%;
+  }
+  .contanier .box1,
+.contanier .box2,
+.contanier .box3,
+.contanier .box4,
+.contanier .box5,
+.contanier .box6,
+.contanier .box7,
+.contanier .box8,
+.contanier .box9 {
+  display: none;
+}
+  .features{
+    border: none;
+    height: 325vh;
+    overflow-x: hidden;
+  }
+  .features .textbox{
+    width: 80%;
+  }
+  .features .part2{
+    gap: 15px;
+    height: 90%;
+    padding: 20px;
+  }
+  .gallery{
+    justify-content: flex-start;
+    border: none;
+    overflow-x: auto;
+  }
+  
+}

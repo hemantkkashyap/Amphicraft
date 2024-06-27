@@ -8,22 +8,33 @@ dotenv.config();
 
 
 
+
 const newPayment = async (req, res) => {
     try {
-        const merchantTransactionId = req.body.transactionId;
+        const { transactionId, MUID, name, amount, number } = req.body;
+
+        if (!transactionId || !MUID || !name || !amount || !number) {
+            return res.status(400).send({
+                message: 'All input fields are required',
+                success: false
+            });
+        }
+
+        const merchantTransactionId = transactionId;
         const data = {
             merchantId: process.env.MERCHANT_ID,
             merchantTransactionId: merchantTransactionId,
-            merchantUserId: req.body.MUID,
-            name: req.body.name,
-            amount: req.body.amount * 100,
-            redirectUrl: `https://amphicraft.vercel.app/api/status/${merchantTransactionId}`,
+            merchantUserId: MUID,
+            name: name,
+            amount: amount * 100, // Assuming amount is in the smallest currency unit
+            redirectUrl: `http://localhost:5000/api/status/${merchantTransactionId}`,
             redirectMode: 'POST',
-            mobileNumber: req.body.number,
+            mobileNumber: number,
             paymentInstrument: {
                 type: 'PAY_PAGE'
             }
         };
+
         const payload = JSON.stringify(data);
         const payloadMain = Buffer.from(payload).toString('base64');
         const keyIndex = 1;
@@ -31,7 +42,7 @@ const newPayment = async (req, res) => {
         const sha256 = crypto.createHash('sha256').update(string).digest('hex');
         const checksum = sha256 + '###' + keyIndex;
 
-        const uat_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay"
+        const uat_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
         const options = {
             method: 'POST',
             url: uat_URL,
@@ -45,16 +56,28 @@ const newPayment = async (req, res) => {
             }
         };
 
+        console.log('Request Payload:', options.data);
+        
         const response = await axios(options);
         return res.status(200).send(response.data.data.instrumentResponse.redirectInfo.url);
     } catch (error) {
-        console.error(error);
+        console.error('Error details:', {
+            message: error.message,
+            response: error.response ? {
+                data: error.response.data,
+                status: error.response.status,
+                headers: error.response.headers
+            } : null,
+            request: error.request || null,
+            config: error.config || null
+        });
+
         return res.status(500).send({
             message: error.message,
             success: false
         });
     }
-}
+};
 
 const checkStatus = async (req, res) => {
     const merchantTransactionId = res.req.body.transactionId;
@@ -79,11 +102,11 @@ const checkStatus = async (req, res) => {
         const response = await axios(options);
         if (response.data.success === true) {
             await updateParticipantStatus(merchantTransactionId, 'success');
-            const url = `https://amphicraft.vercel.app/success`;
+            const url = `http://localhost:3000/success`;
             return res.redirect(url);
         } else {
             await updateParticipantStatus(merchantTransactionId, 'failure');
-            const url = `https://amphicraft.vercel.app/failure`;
+            const url = `http://localhost:3000/failure`;
             return res.redirect(url);
         }
     } catch (error) {

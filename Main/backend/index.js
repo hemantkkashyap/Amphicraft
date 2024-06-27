@@ -11,11 +11,11 @@ dotenv.config();
 connectToMongo();
 
 const app = express();
-const port = process.env.PORT;
+const port =5000;
 
 // Enable CORS for specific origins
 app.use(cors({
-  origin: 'https://amphicraft.vercel.app', 
+  origin: 'http://localhost:3000', 
   allowedHeaders: ['Content-Type', 'Authorization', 'auth-token']
 }));
 

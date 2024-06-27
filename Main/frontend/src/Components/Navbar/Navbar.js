@@ -113,9 +113,9 @@ export default function Navbar() {
           </div>
           <span>
               {theme === "light" ? (
-                <img id="logo" src="images/Teamlogo.png" alt="Logo" />
+                <img id="logo" src="images/craftlogo.png" alt="Logo" />
               ) : (
-                <img id="logo" src="images/Teamlogo3.png" alt="Logo" />
+                <img id="logo" src="images/craftlogo.png" alt="Logo" />
               )}
             </span>
             <div className="part2">

@@ -12,14 +12,12 @@ const limiter = rateLimit({
 const Transactions = async (req, res) => {
     try {
         const { email } = req.body; // Retrieve email from query parameters
-        console.log("Email:", email);
         // Find all participants with the provided email and status "success"
         const transactions = await Participant.find({
           "participants.email": email,
           "status": "success"
         });
-    
-        console.log("123");
+  
     
         if (transactions.length === 0) {
           return res.status(404).json({ message: "No transactions found for the provided email" });

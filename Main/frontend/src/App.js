@@ -1,24 +1,17 @@
-import "./App.css";
+import './index.css';
 import "../src/Components/Navbar/Nav.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop.js";
 import { Provider } from "react-redux";
 import store from "./Reduxstore/store";
 import { CategoryProvider } from "./Reduxstore/CategoryContext"; // Import CategoryProvider
-import Home from "./Components/Home/Home";
-import Login from "./Components/Home/Login";
-import Signup from "./Components/Home/Signup";
-import Contact from "./Components/Home/Contact";
-import About from "./Components/Home/About";
 import ForgetPassword from "./Components/Home/ForgetPassword";
-import Event from "./Components/Home/Events/Event";
 import Profile from "./Components/Home/Profile";
 import Addevent from "./Components/SubAdmin/Addevent";
 import Admin from "./Components/Admin/Admin";
 import Subadmin from "./Components/Admin/Subadmin";
 import Success from "./Components/Payment/Success";
 import Failure from "./Components/Payment/Failure";
-import Navbar from "./Components/Navbar/Navbar";
 import Eventdetails from "./Components/Home/Events/Eventdetails";
 import EventForm from "./Components/Home/Events/EventForm";
 import Policy from "./Components/Footer/Policy";
@@ -31,6 +24,15 @@ import SubadminDashboard from "./Components/SubAdmin/SubadminDashboard.js";
 import AllParticipents from "./Components/SubAdmin/AllParticipents.js";
 import Time from "./Components/Admin/Time.js";
 import FourzeroFour from "./Components/FourzeroFour.js";
+import Main from "./Components/Home/Main.js";
+import NewNav from "./Components/Home/NewNav.js";
+import Home from "./assets/Home/Home.jsx";
+import Login from './assets/Home/Login.jsx';
+import About from './assets/Home/About.jsx';
+import Contact from './assets/Home/Contact.jsx';
+import Signup from './assets/Home/Signup.jsx';
+import Event from './assets/Home/Event.jsx';
+import EventRegister from './assets/Home/EventRegister.jsx';
 
 function App() {
   return (
@@ -39,15 +41,15 @@ function App() {
         <CategoryProvider>
           <Router>
             <ScrollToTop />
-            <Navbar />
+           {/*<NewNav/> */}
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home/>} />
               <Route exact path="/about" element={<About />} />
-              <Route exact path="/contact" element={<Contact />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/Signup" element={<Signup />} />
+              <Route exact path="/contact" element={<Contact/>} />
+              <Route exact path="/login" element={<Login/>} />
+              <Route exact path="/Signup" element={<Signup/>} />
               <Route exact path="/forget" element={<ForgetPassword />} />
-              <Route exact path="/event" element={<Event />} />
+              <Route exact path="/event" element={<Event/>} />
               <Route exact path="/profile" element={<Profile />} />
               <Route
                 exact
@@ -69,6 +71,7 @@ function App() {
               <Route exact path="/allupdate" element={<Allupdation />} />
               <Route exact path="/time" element={<Time />} />
               <Route exact path="/addevent" element={<Addevent />} />
+              <Route exact path="/register" element={<EventRegister/>} />
               <Route
                 exact
                 path="/allparticipent"
