@@ -4,21 +4,16 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-  faCircleInfo,
-  faUserGroup,
-  faWandMagicSparkles,
-} from "@fortawesome/free-solid-svg-icons";
 AOS.init({
   offset: 0,
   duration: 1000,
 });
 
 const categoryColors = {
-  Indoor: "Slide1.png",
-  Outdoor: "Slide2.png",
-  Tech: "Slide3.png",
-  Cultural: "Slide4.png",
+  Indoor: "./Slide1.png",
+  Outdoor: "./Slide2.png",
+  Tech: "./Slide3.png",
+  Cultural: "./Slide4.png",
 };
 
 const buttonColors = {
