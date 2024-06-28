@@ -10,10 +10,10 @@ AOS.init({
 });
 
 const categoryColors = {
-  Indoor: "./Slide1.png",
-  Outdoor: "./Slide2.png",
-  Tech: "./Slide3.png",
-  Cultural: "./Slide4.png",
+  Indoor: "#C9B5D8",
+  Outdoor: "#F6CADC",
+  Tech: "#C4DFFB",
+  Cultural: "#ACD1FB",
 };
 
 const buttonColors = {
@@ -86,22 +86,22 @@ export default function Event() {
         </div>
 
         <div className="flex flex-wrap gap-10 justify-center w-full h-auto p-5">
-          {events.map((event, index) => (
+  {events.map((event, index) => (
             <Link
               to={`/register`}
               state={{ event }}
               key={index}
             >
               <div
-                className="flex flex-col items-center justify-center w-[300px] h-[300px] bg-white rounded-lg text-white"
+                className="flex flex-col items-center justify-center w-[300px] h-[300px] bg-white rounded-lg text-white" 
                 style={{
-                  backgroundImage: `url(${categoryColors[event.category]})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundColor:categoryColors[event.category],
                 }}
-              >
-                <div className="flex justify-center items-center text-3xl w-full h-[45%]">
-                  <p>{event.entries}</p>
+                >
+
+<div className="flex justify-center items-center text-3xl w-full h-[45%]">
+
+                  <p className="w-[100px] h-[100px] rounded-full bg-white opacity-50 flex items-center justify-center text-black">10</p>
                 </div>
                 <div className="flex flex-col items-center w-full h-[55%]">
                   <div className="text-center w-full">
@@ -121,6 +121,7 @@ export default function Event() {
               </div>
             </Link>
           ))}
+        
         </div>
       </section>
     </>
