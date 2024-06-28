@@ -98,7 +98,7 @@ export default function Event() {
               >
                 <div className="flex justify-center items-center text-3xl w-full h-[45%]">
                   <p className="w-[100px] h-[100px] rounded-full bg-white opacity-50 flex items-center justify-center text-black">
-                    10
+                    {event.entries}
                   </p>
                 </div>
                 <div className="flex flex-col items-center w-full h-[55%]">
