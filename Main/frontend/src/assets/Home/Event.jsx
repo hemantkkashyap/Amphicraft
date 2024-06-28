@@ -15,10 +15,10 @@ AOS.init({
 });
 
 const categoryColors = {
-  Indoor: "images/Slide1.png",
-  Outdoor: "images/Slide2.png",
-  Tech: "images/Slide3.png",
-  Cultural: "images/Slide4.png",
+  Indoor: "Slide1.png",
+  Outdoor: "Slide2.png",
+  Tech: "Slide3.png",
+  Cultural: "Slide4.png",
 };
 
 const buttonColors = {
